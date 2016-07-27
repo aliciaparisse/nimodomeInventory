@@ -12,7 +12,7 @@ def walkLevel(some_dir, level=1):
         if num_sep + level <= num_sep_this:
             del dirs[:]
 
-def createInventory(inputDir, outputDir):
+def generateInventory(inputDir, outputDir):
     inventory = []
 
     for dirpath, seriesDirNames, fileNames in walkLevel(inputDir, 0) :
@@ -36,7 +36,7 @@ def createInventory(inputDir, outputDir):
 
     return inventory
 
-def createDeltaInventory(inputDir, outputDir, prevInventory, currInventory):
+def generateDeltaInventory(outputFile, prevInventory, currInventory):
     deltaInventory = []
 
 
@@ -162,10 +162,11 @@ def createDeltaInventory(inputDir, outputDir, prevInventory, currInventory):
         if (deltaSerie["seasons"] != []):
             deltaInventory.append(deltaSerie)
 
-    print deltaInventory
-
-
+    # Saving the delta inventory to a file
+    with open(outputFile, 'w') as outfile:
+        json.dump(deltaInventory, outfile)
     return deltaInventory
 
 if __name__ == "__main__":
-    createInventory()
+    generateInventory()
+    print "You launched the series.py file without calling any of its function"

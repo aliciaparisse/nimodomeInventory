@@ -1,10 +1,11 @@
-import sys
+import sys,json
 sys.path.insert(0, '..')
 
 import series
 
 if __name__ == "__main__":
-    previousInventory = series.createInventory('testHierarchy/series', '../inventories/inventory.json')
-    currentInventory = series.createInventory('testUpdatedHierarchy/series', 'testUpdatedInventory.json')
+    currentInventory = series.generateInventory('testUpdatedHierarchy/series', 'testUpdatedInventory.json')
 
-    series.createDeltaInventory('testUpdatedDir/series','testUpdatedInventory.json', previousInventory, currentInventory)
+    with open('../inventories/inventory.json', 'r') as content_file:
+        previousInventory = json.load(content_file,encoding="UTF-8")
+    series.generateDeltaInventory('testUpdatedInventory.json', previousInventory, currentInventory)
