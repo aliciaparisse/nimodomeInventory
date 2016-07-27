@@ -1,0 +1,16 @@
+[
+  {"name" : "nameOfTheSeries",
+  "seasons" : [{
+    "seasonName" : "SXX",
+    "episodes" : [
+      {"episodeName":"name of the episode",
+      "number" : "number of the episode",
+      "length" : "82 min"},
+      {}
+    ]
+  },
+    {}
+
+  ]},
+  {}
+]
